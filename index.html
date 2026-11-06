@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#090d14" />
+    <title>Forma — Interactive Product Showcase</title>
+    <style>
+      :root { color-scheme: dark; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #090d14; color: #f5f7fb; font-synthesis: none; }
+      * { box-sizing: border-box; }
+      html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; }
+      body { background: radial-gradient(ellipse at 61% 45%, #1b2632 0%, #0c1119 48%, #080b11 100%); }
+      #stage { position: fixed; inset: 0; }
+      #stage canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+      .topbar { position: fixed; z-index: 2; inset: 0 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 27px 36px; pointer-events: none; }
+      .brand { display: flex; align-items: center; gap: 11px; font-size: 13px; font-weight: 700; letter-spacing: .2em; }
+      .brand-mark { width: 25px; height: 25px; border: 1px solid #8392a8; border-radius: 8px; transform: rotate(45deg); position: relative; }
+      .brand-mark::after { content: ""; position: absolute; inset: 6px; background: #b8c7da; border-radius: 2px; }
+      .nav { display: flex; gap: 28px; color: #8996a8; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+      .nav a { color: inherit; text-decoration: none; pointer-events: auto; transition: color .2s; }
+      .nav a:hover { color: #fff; }
+      .edition { color: #8390a2; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; }
+      .status { position: fixed; z-index: 2; left: 36px; top: 88px; display: flex; align-items: center; gap: 8px; color: #738296; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; }
+      .status-dot { width: 6px; height: 6px; border-radius: 50%; background: #8fd7b2; box-shadow: 0 0 12px #8fd7b288; }
+      .product-switcher { position: fixed; z-index: 2; top: 44%; left: 36px; display: grid; gap: 9px; }
+      .product-tab { width: 40px; height: 40px; border: 1px solid #ffffff20; border-radius: 12px; color: #8793a2; background: #111923a8; cursor: pointer; font: inherit; font-size: 10px; transition: .2s ease; }
+      .product-tab:hover { border-color: #ffffff70; color: #fff; transform: translateX(2px); }
+      .product-tab[aria-pressed="true"] { background: #dbe6f0; border-color: #dbe6f0; color: #0b1118; }
+      .product-copy { position: fixed; z-index: 2; left: clamp(90px, 11vw, 160px); bottom: clamp(38px, 10vh, 100px); max-width: 330px; pointer-events: none; }
+      .eyebrow { color: #91a8c5; font-size: 10px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; }
+      h1 { margin: 12px 0 10px; font-size: clamp(38px, 5vw, 64px); line-height: .94; letter-spacing: -.06em; font-weight: 550; }
+      .description { color: #9da9b8; font-size: 13px; line-height: 1.65; margin: 0; }
+      .specs { display: flex; gap: 20px; margin-top: 21px; }
+      .spec { display: grid; gap: 5px; }
+      .spec strong { font-size: 12px; font-weight: 600; color: #e4eaf1; }
+      .spec span { color: #778599; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; }
+      .controls-panel { position: fixed; z-index: 2; right: clamp(20px, 6vw, 76px); bottom: clamp(30px, 8vh, 78px); width: 240px; padding: 18px; border: 1px solid #ffffff18; border-radius: 16px; background: #101722c9; backdrop-filter: blur(16px); box-shadow: 0 18px 60px #0005; }
+      .panel-title { margin: 0 0 13px; color: #b7c1ce; font-size: 10px; font-weight: 700; letter-spacing: .17em; text-transform: uppercase; }
+      .swatches { display: flex; gap: 10px; }
+      .swatch { width: 30px; height: 30px; padding: 0; border: 2px solid transparent; border-radius: 50%; background: var(--swatch); cursor: pointer; box-shadow: inset 0 0 0 1px #ffffff55; transition: transform .18s ease, border-color .18s ease; }
+      .swatch:hover { transform: translateY(-2px); }
+      .swatch[aria-pressed="true"] { border-color: #f5f7fb; box-shadow: 0 0 0 3px #ffffff26, inset 0 0 0 1px #ffffff55; }
+      .buy-button { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-top: 18px; padding: 13px 14px; border: 0; border-radius: 10px; background: #e2e8ee; color: #111820; text-decoration: none; font-size: 11px; font-weight: 700; letter-spacing: .06em; cursor: pointer; transition: background .2s, transform .2s; }
+      .buy-button:hover { background: #fff; transform: translateY(-1px); }
+      .hint { margin: 13px 0 0; color: #728094; font-size: 9px; letter-spacing: .04em; }
+      @media (max-width: 680px) {
+        .topbar { padding: 20px; }
+        .nav { display: none; }
+        .edition { font-size: 8px; }
+        .status { left: 20px; top: 72px; }
+        .product-switcher { left: 18px; top: 32%; gap: 7px; }
+        .product-tab { width: 35px; height: 35px; border-radius: 10px; }
+        .product-copy { left: 68px; bottom: 235px; max-width: min(270px, calc(100vw - 88px)); }
+        h1 { font-size: 42px; }
+        .description { font-size: 12px; }
+        .specs { gap: 15px; margin-top: 13px; }
+        .controls-panel { left: 18px; right: 18px; bottom: 16px; width: auto; padding: 13px 15px; }
+        .panel-title { margin-bottom: 9px; }
+        .buy-button { position: absolute; right: 14px; bottom: 14px; width: 142px; margin: 0; padding: 12px; }
+        .hint { margin-top: 10px; }
+      }
+      @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: .01ms !important; } }
+    </style>
+  </head>
+  <body>
+    <main id="stage" aria-label="Visualisasi produk 3D interaktif"></main>
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>FORMA</span></div>
+      <nav class="nav" aria-label="Navigasi utama"><a href="#collection">Collection</a><a href="#details">Details</a><a href="#support">Support</a></nav>
+      <div class="edition">Objects for everyday / 2025</div>
+    </header>
+    <div class="status"><span class="status-dot"></span>Interactive preview</div>
+    <nav class="product-switcher" id="collection" aria-label="Pilih produk">
+      <button class="product-tab" type="button" data-product="speaker" aria-label="Pilih Sonic One" aria-pressed="true">01</button>
+      <button class="product-tab" type="button" data-product="headphones" aria-label="Pilih Studio Arc" aria-pressed="false">02</button>
+      <button class="product-tab" type="button" data-product="watch" aria-label="Pilih Form Watch" aria-pressed="false">03</button>
+    </nav>
+    <section class="product-copy" id="details" aria-labelledby="product-title">
+      <div class="eyebrow" id="product-category">Series 01 · Audio</div>
+      <h1 id="product-title">Sonic<br />One.</h1>
+      <p class="description" id="product-description">Bentuk yang jernih. Suara yang memenuhi ruang. Putar produk untuk melihat detailnya.</p>
+      <div class="specs" id="product-specs">
+        <div class="spec"><strong>360°</strong><span>Spatial sound</span></div>
+        <div class="spec"><strong>24 h</strong><span>Battery</span></div>
+        <div class="spec"><strong>IP67</strong><span>Waterproof</span></div>
+      </div>
+    </section>
+    <aside class="controls-panel" aria-label="Kontrol produk">
+      <p class="panel-title">Pilih warna</p>
+      <div class="swatches" role="group" aria-label="Pilihan warna">
+        <button class="swatch" type="button" style="--swatch:#c5a982" data-color="#c5a982" aria-label="Warna sand" aria-pressed="true"></button>
+        <button class="swatch" type="button" style="--swatch:#647f9e" data-color="#647f9e" aria-label="Warna slate" aria-pressed="false"></button>
+        <button class="swatch" type="button" style="--swatch:#a56768" data-color="#a56768" aria-label="Warna rose" aria-pressed="false"></button>
+      </div>
+      <a class="buy-button" id="buy-button" href="mailto:hello@forma.example?subject=Pre-order%20Sonic%20One"><span>Pre-order</span><span aria-hidden="true">↗</span></a>
+      <p class="hint">Drag untuk memutar · Scroll untuk zoom · Right-drag untuk pan</p>
+    </aside>
+
+    <script type="importmap">
+      { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/" } }
+    </script>
+    <script type="module">
+      import * as THREE from "three";
+      import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+
+      const mount = document.querySelector("#stage");
+      const scene = new THREE.Scene();
+      scene.background = new THREE.Color("#0b1018");
+      const camera = new THREE.PerspectiveCamera(34, innerWidth / innerHeight, 0.1, 100);
+      camera.position.set(4.5, 3.0, 7.5);
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+      renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+      renderer.setSize(innerWidth, innerHeight);
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.15;
+      mount.appendChild(renderer.domElement);
+
+      scene.add(new THREE.AmbientLight(0xc3d5ee, 1.05));
+      const keyLight = new THREE.DirectionalLight(0xffe5c7, 3.3);
+      keyLight.position.set(-4, 7, 5);
+      keyLight.castShadow = true;
+      keyLight.shadow.mapSize.set(2048, 2048);
+      keyLight.shadow.camera.left = -5; keyLight.shadow.camera.right = 5;
+      keyLight.shadow.camera.top = 5; keyLight.shadow.camera.bottom = -5;
+      keyLight.shadow.bias = -0.00015; keyLight.shadow.radius = 5;
+      scene.add(keyLight);
+      const rimLight = new THREE.DirectionalLight(0x83a8dc, 2.5);
+      rimLight.position.set(5, 3, -4); scene.add(rimLight);
+      const fillLight = new THREE.PointLight(0x9ab9dd, 18, 12);
+      fillLight.position.set(-3, 2, -1); scene.add(fillLight);
+
+      const floor = new THREE.Mesh(new THREE.CircleGeometry(200, 96), new THREE.MeshStandardMaterial({ color: "#111821", roughness: 0.88, metalness: 0.08 }));
+      floor.rotation.x = -Math.PI / 2; floor.position.y = -0.015; floor.receiveShadow = true; scene.add(floor);
+      const stage = new THREE.Group(); scene.add(stage);
+      const products = {};
+      const palette = ["#c5a982", "#647f9e", "#a56768"];
+      let activeProduct = "speaker";
+      let activeColor = 0;
+
+      function makeMaterial(color, metalness = 0.25, roughness = 0.28) {
+        return new THREE.MeshPhysicalMaterial({ color, metalness, roughness, clearcoat: 0.7, clearcoatRoughness: 0.18 });
+      }
+      function addMesh(group, geometry, material, position, scale) {
+        const object = new THREE.Mesh(geometry, material);
+        object.position.set(...position);
+        if (scale) object.scale.set(...scale);
+        object.castShadow = true; object.receiveShadow = true; group.add(object);
+        return object;
+      }
+      function createSpeaker() {
+        const group = new THREE.Group();
+        const shell = makeMaterial(palette[0], 0.22, 0.27);
+        const dark = makeMaterial("#202832", 0.72, 0.24);
+        const grilleMat = new THREE.MeshStandardMaterial({ color: "#252c35", metalness: 0.2, roughness: 0.72 });
+        addMesh(group, new THREE.CylinderGeometry(0.82, 0.82, 2.15, 96), shell, [0, 1.13, 0]);
+        addMesh(group, new THREE.CylinderGeometry(0.79, 0.79, 0.08, 96), dark, [0, 2.23, 0]);
+        addMesh(group, new THREE.CylinderGeometry(0.7, 0.7, 0.035, 96), shell, [0, 2.285, 0]);
+        addMesh(group, new THREE.CylinderGeometry(0.13, 0.13, 0.075, 48), dark, [0, 2.34, 0]);
+        const grille = addMesh(group, new THREE.CylinderGeometry(0.824, 0.824, 1.47, 96, 1, true, Math.PI * 0.12, Math.PI * 0.76), grilleMat, [0, 1.11, 0]); grille.castShadow = false;
+        const band = addMesh(group, new THREE.TorusGeometry(0.824, 0.018, 10, 96), dark, [0, 0.56, 0]); band.rotation.x = Math.PI / 2;
+        for (let i = 0; i < 3; i++) addMesh(group, new THREE.SphereGeometry(0.035, 16, 12), dark, [-0.14 + i * 0.14, 2.35, 0.13]);
+        return { group, colorMaterials: [shell] };
+      }
+      function createHeadphones() {
+        const group = new THREE.Group();
+        const shell = makeMaterial(palette[0], 0.34, 0.23);
+        const cushion = new THREE.MeshPhysicalMaterial({ color: "#171c24", metalness: 0.05, roughness: 0.82, clearcoat: 0.1 });
+        const trim = makeMaterial("#aeb9c6", 0.82, 0.2);
+        const bandCurve = new THREE.CatmullRomCurve3([
+          new THREE.Vector3(-1.0, 1.25, 0), new THREE.Vector3(-0.95, 2.05, 0), new THREE.Vector3(-0.55, 2.62, 0),
+          new THREE.Vector3(0, 2.82, 0), new THREE.Vector3(0.55, 2.62, 0), new THREE.Vector3(0.95, 2.05, 0), new THREE.Vector3(1.0, 1.25, 0),
+        ]);
+        addMesh(group, new THREE.TubeGeometry(bandCurve, 64, 0.105, 16, false), shell, [0, 0, 0]);
+        const padCurve = new THREE.CatmullRomCurve3([
+          new THREE.Vector3(-0.89, 1.32, 0.05), new THREE.Vector3(-0.87, 1.9, 0.05), new THREE.Vector3(-0.55, 2.42, 0.05),
+          new THREE.Vector3(0, 2.58, 0.05), new THREE.Vector3(0.55, 2.42, 0.05), new THREE.Vector3(0.87, 1.9, 0.05), new THREE.Vector3(0.89, 1.32, 0.05),
+        ]);
+        addMesh(group, new THREE.TubeGeometry(padCurve, 64, 0.055, 12, false), cushion, [0, 0, 0]);
+        [-1, 1].forEach((side) => {
+          const cup = addMesh(group, new THREE.CylinderGeometry(0.54, 0.58, 0.34, 64), shell, [side * 1.0, 1.08, 0]); cup.rotation.z = side * -0.08;
+          const earPad = addMesh(group, new THREE.TorusGeometry(0.43, 0.105, 16, 64), cushion, [side * 1.0, 1.08, 0.2]); earPad.rotation.x = Math.PI / 2;
+          const plate = addMesh(group, new THREE.CylinderGeometry(0.34, 0.34, 0.025, 64), trim, [side * 1.0, 1.08, 0.19]); plate.rotation.x = Math.PI / 2;
+          addMesh(group, new THREE.CylinderGeometry(0.28, 0.28, 0.035, 64), shell, [side * 1.0, 1.08, 0.22]).rotation.x = Math.PI / 2;
+        });
+        return { group, colorMaterials: [shell] };
+      }
+      function createWatch() {
+        const group = new THREE.Group();
+        const shell = makeMaterial(palette[0], 0.55, 0.2);
+        const strapMat = new THREE.MeshPhysicalMaterial({ color: "#222a33", metalness: 0.12, roughness: 0.56, clearcoat: 0.3 });
+        const glass = new THREE.MeshPhysicalMaterial({ color: "#111722", metalness: 0.2, roughness: 0.08, clearcoat: 1, clearcoatRoughness: 0.04 });
+        const screen = new THREE.MeshStandardMaterial({ color: "#79d6c3", emissive: "#1b8d84", emissiveIntensity: 0.55, roughness: 0.4 });
+        addMesh(group, new THREE.BoxGeometry(1.02, 1.28, 0.22), strapMat, [0, 1.77, 0]);
+        addMesh(group, new THREE.BoxGeometry(1.02, 1.28, 0.22), strapMat, [0, -0.02, 0]);
+        for (const y of [1.35, 1.54, 1.73, 1.92, 2.11]) addMesh(group, new THREE.BoxGeometry(0.58, 0.045, 0.24), makeMaterial("#39434d", 0.48, 0.3), [0, y, 0]);
+        const caseMesh = addMesh(group, new THREE.BoxGeometry(1.38, 1.65, 0.42, 4, 4, 1), shell, [0, 0.87, 0]);
+        caseMesh.geometry = new THREE.BoxGeometry(1.38, 1.65, 0.42);
+        const bezel = addMesh(group, new THREE.BoxGeometry(1.22, 1.47, 0.08), makeMaterial("#252e38", 0.68, 0.22), [0, 0.87, 0.245]);
+        const display = addMesh(group, new THREE.BoxGeometry(1.09, 1.34, 0.035), glass, [0, 0.87, 0.295]);
+        addMesh(group, new THREE.BoxGeometry(0.58, 0.075, 0.018), screen, [0, 1.14, 0.318]);
+        addMesh(group, new THREE.BoxGeometry(0.74, 0.045, 0.018), new THREE.MeshStandardMaterial({ color: "#4e9f99", emissive: "#12615d", emissiveIntensity: 0.45 }), [0, 0.97, 0.318]);
+        addMesh(group, new THREE.BoxGeometry(0.47, 0.045, 0.018), new THREE.MeshStandardMaterial({ color: "#4e9f99", emissive: "#12615d", emissiveIntensity: 0.45 }), [0, 0.84, 0.318]);
+        addMesh(group, new THREE.BoxGeometry(0.66, 0.045, 0.018), new THREE.MeshStandardMaterial({ color: "#4e9f99", emissive: "#12615d", emissiveIntensity: 0.45 }), [0, 0.71, 0.318]);
+        const crown = addMesh(group, new THREE.CylinderGeometry(0.12, 0.12, 0.16, 32), shell, [0.76, 1.1, 0]); crown.rotation.z = Math.PI / 2;
+        const button = addMesh(group, new THREE.BoxGeometry(0.13, 0.32, 0.12), shell, [0.75, 0.58, 0]); button.rotation.z = -0.08;
+        return { group, colorMaterials: [shell] };
+      }
+
+      products.speaker = { ...createSpeaker(), category: "Series 01 · Audio", title: "Sonic<br>One.", description: "Bentuk yang jernih. Suara yang memenuhi ruang. Putar produk untuk melihat detailnya.", specs: [["360°", "Spatial sound"], ["24 h", "Battery"], ["IP67", "Waterproof"]], price: "Pre-order" };
+      products.headphones = { ...createHeadphones(), category: "Series 02 · Audio", title: "Studio<br>Arc.", description: "Kenyamanan sepanjang hari bertemu dengan suara yang detail dan imersif.", specs: [["40 mm", "Drivers"], ["38 h", "Battery"], ["ANC", "Adaptive"]], price: "Buy now" };
+      products.watch = { ...createWatch(), category: "Series 03 · Wearable", title: "Form<br>Watch.", description: "Ritme harian Anda, dirancang ulang dalam bentuk yang tenang dan presisi.", specs: [["AMOLED", "Always on"], ["7 days", "Battery"], ["5 ATM", "Water rating"]], price: "Pre-order" };
+      Object.values(products).forEach((product) => { product.group.visible = false; stage.add(product.group); });
+      products[activeProduct].group.visible = true;
+      stage.position.y = 0.12;
+
+      const controls = new OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true; controls.dampingFactor = 0.06;
+      controls.target.set(0, 1.15, 0); controls.minDistance = 4.2; controls.maxDistance = 12;
+      controls.minPolarAngle = 0.25; controls.maxPolarAngle = Math.PI * 0.49; controls.enablePan = true;
+      let idle = true;
+      let resumeRotationAt = 0;
+      controls.addEventListener("start", () => { idle = false; });
+      controls.addEventListener("end", () => { resumeRotationAt = performance.now() + 2400; });
+
+      const tabs = [...document.querySelectorAll(".product-tab")];
+      const swatches = [...document.querySelectorAll(".swatch")];
+      const title = document.querySelector("#product-title");
+      const category = document.querySelector("#product-category");
+      const description = document.querySelector("#product-description");
+      const specs = document.querySelector("#product-specs");
+      const buyButton = document.querySelector("#buy-button");
+      function updateProduct(key) {
+        activeProduct = key;
+        Object.entries(products).forEach(([name, product]) => { product.group.visible = name === key; });
+        const product = products[key];
+        title.innerHTML = product.title;
+        category.textContent = product.category;
+        description.textContent = product.description;
+        specs.innerHTML = product.specs.map(([value, label]) => `<div class="spec"><strong>${value}</strong><span>${label}</span></div>`).join("");
+        buyButton.querySelector("span").textContent = product.price;
+        buyButton.href = `mailto:hello@forma.example?subject=${encodeURIComponent(`Order ${product.title.replace("<br>", " ")}`)}`;
+        tabs.forEach((tab) => tab.setAttribute("aria-pressed", String(tab.dataset.product === key)));
+        activeColor = 0;
+        applyColor(0);
+        controls.target.set(0, key === "headphones" ? 1.45 : 1.15, 0);
+        resumeRotationAt = performance.now() + 1200;
+      }
+      function applyColor(index) {
+        activeColor = index;
+        const product = products[activeProduct];
+        product.colorMaterials.forEach((material) => material.color.set(palette[index]));
+        swatches.forEach((button, buttonIndex) => button.setAttribute("aria-pressed", String(buttonIndex === index)));
+      }
+      tabs.forEach((tab) => tab.addEventListener("click", () => updateProduct(tab.dataset.product)));
+      swatches.forEach((button, index) => button.addEventListener("click", () => applyColor(index)));
+
+      function onResize() {
+        camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix();
+        renderer.setSize(innerWidth, innerHeight); renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+      }
+      window.addEventListener("resize", onResize);
+      let previousTime = 0;
+      function animate(time) {
+        requestAnimationFrame(animate);
+        const delta = previousTime ? Math.min((time - previousTime) / 1000, 0.05) : 0;
+        previousTime = time;
+        controls.update();
+        if (time >= resumeRotationAt) idle = true;
+        if (idle) stage.rotation.y += delta * 0.22;
+        renderer.render(scene, camera);
+      }
+      requestAnimationFrame(animate);
+    </script>
+  </body>
+</html>
