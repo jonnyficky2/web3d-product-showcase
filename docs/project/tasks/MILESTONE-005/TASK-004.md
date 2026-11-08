@@ -1,0 +1,21 @@
+# TASK-004 — Define Production Dependency Strategy
+
+- **Objective:** Decide how Three.js dependencies are versioned and delivered in production.
+- **Background:** Current runtime depends directly on jsDelivr and has no lockfile.
+- **Priority:** P1
+- **Status:** TODO
+- **Milestone:** MILESTONE-005
+- **Task type:** Architecture / Release
+- **Complexity:** M
+- **Created date:** 2026-11-09
+- **Dependencies:** None
+- **Requirements:** NFR-103
+- **Scope:** Compare local bundle, vendored modules, and controlled CDN options.
+- **Out of scope:** Immediate migration without approval.
+- **Affected modules:** Import Map, release docs.
+- **Expected files:** `package.json` or deployment docs, ADR, security docs.
+- **Implementation Guidance:** Compare reproducibility, integrity, offline behavior, update cost, and rollback for each option.
+- **Acceptance criteria:** Decision records availability, integrity, update process, and rollback.
+- **Testing requirements:** Reproducible local and production-like load.
+- **Definition of Done:** ADR approved before implementation.
+- **Execution notes:** Not started.

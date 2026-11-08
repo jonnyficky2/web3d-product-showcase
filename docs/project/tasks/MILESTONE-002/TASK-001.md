@@ -1,0 +1,21 @@
+# TASK-001 — Add WebGL and Module Fallback
+
+- **Objective:** Show an accessible fallback when WebGL or CDN module loading fails.
+- **Background:** Current initialization can leave a blank page on runtime failure.
+- **Priority:** P0
+- **Status:** TODO
+- **Milestone:** MILESTONE-002
+- **Task type:** Reliability
+- **Complexity:** S
+- **Created date:** 2026-11-09
+- **Dependencies:** TASK-101
+- **Requirements:** FR-101
+- **Scope:** Guard renderer/module initialization and add fallback UI.
+- **Out of scope:** Replacing Three.js.
+- **Affected modules:** `index.html`
+- **Expected files:** `index.html`, `docs/project/PROJECT_STATE.md`
+- **Implementation Guidance:** Guard module/renderer startup and preserve a usable DOM product summary when WebGL fails.
+- **Acceptance criteria:** WebGL unavailable and module failure each produce visible, accessible guidance; normal load remains unchanged.
+- **Testing requirements:** Browser with WebGL disabled and blocked CDN.
+- **Definition of Done:** Both failure paths verified and status synchronized.
+- **Execution notes:** Not started.

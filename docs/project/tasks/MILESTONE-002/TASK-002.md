@@ -1,0 +1,23 @@
+# TASK-002 — Define Mobile Performance Budget
+
+- **Task ID:** TASK-002
+- **Title:** Define mobile performance budget
+- **Milestone:** MILESTONE-002
+- **Priority:** P0
+- **Status:** TODO
+- **Type:** PERFORMANCE / RESEARCH
+- **Complexity:** S
+- **Created date:** 2026-11-09
+- **Related requirement IDs:** NFR-101
+- **Objective:** Convert measured mobile rendering behavior into explicit performance guardrails.
+- **Background:** DPR 2, antialiasing, 2048 shadows, and continuous rendering may be expensive, but tuning needs agreed thresholds.
+- **Scope:** Define target FPS/frame-time range, draw-call budget, DPR policy, and acceptable quality trade-offs from TASK-006.
+- **Out of Scope:** Implementing rendering changes or adding a new renderer.
+- **Dependencies:** TASK-006 TODO; do not execute before baseline evidence.
+- **Affected Modules:** Performance documentation and future renderer tuning.
+- **Expected Files:** `docs/audit/PERFORMANCE_AUDIT.md`, `docs/project/PROJECT_STATE.md`.
+- **Implementation Guidance:** Use measured baseline values and distinguish targets from guarantees.
+- **Acceptance Criteria:** A documented budget exists for at least one target low-tier profile and a desktop comparison.
+- **Testing Requirements:** Review TASK-006 evidence and validate budget assumptions against available profiles.
+- **Definition of Done:** Budget is traceable to measurements and ready for TASK-007 implementation.
+- **Execution Notes:** Not started.

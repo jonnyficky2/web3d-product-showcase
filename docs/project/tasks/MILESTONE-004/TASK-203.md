@@ -1,0 +1,21 @@
+# TASK-203 — Resource Disposal Lifecycle
+
+- **Objective:** Dispose Three.js resources when scenes are rebuilt or removed.
+- **Background:** Current code has no cleanup path and replaces one geometry without disposing the original.
+- **Priority:** P1
+- **Status:** TODO
+- **Milestone:** MILESTONE-004
+- **Task type:** Performance / Reliability
+- **Complexity:** M
+- **Created date:** 2026-11-09
+- **Dependencies:** TASK-101
+- **Requirements:** NFR-101
+- **Scope:** Geometry/material/texture disposal, controls, listeners, animation cancellation.
+- **Out of scope:** Rebuilding the current scene architecture.
+- **Affected modules:** `index.html`
+- **Expected files:** `index.html`, `docs/engineering/TECHNICAL_DEBT.md`
+- **Implementation Guidance:** Dispose geometries/materials/textures and stop listeners/animation when the scene lifecycle ends.
+- **Acceptance criteria:** Repeated scene lifecycle does not grow renderer resources indefinitely.
+- **Testing requirements:** Repeated mount/unmount or rebuild with renderer memory observation.
+- **Definition of Done:** Cleanup path is exercised and documented.
+- **Execution notes:** Not started.

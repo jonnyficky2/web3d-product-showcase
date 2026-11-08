@@ -1,0 +1,23 @@
+# TASK-007 — Tune Adaptive Rendering Quality
+
+- **Task ID:** TASK-007
+- **Title:** Tune adaptive rendering quality
+- **Milestone:** MILESTONE-002
+- **Priority:** P1
+- **Status:** TODO
+- **Type:** PERFORMANCE
+- **Complexity:** M
+- **Created date:** 2026-11-09
+- **Related requirement IDs:** NFR-101
+- **Objective:** Apply measured rendering-quality trade-offs that improve low-end performance.
+- **Background:** Tuning should follow a recorded baseline instead of assumptions.
+- **Scope:** Adaptive DPR, shadow quality, geometry quality, and render-loop policy as justified by TASK-006.
+- **Out of Scope:** WebGPU migration, new asset pipeline, or unrelated visual redesign.
+- **Dependencies:** TASK-006 TODO; do not execute until baseline evidence exists.
+- **Affected Modules:** `index.html`, performance documentation.
+- **Expected Files:** `index.html`, `docs/audit/PERFORMANCE_AUDIT.md`, `docs/project/PROJECT_STATE.md`.
+- **Implementation Guidance:** Preserve interaction quality, document thresholds, and compare before/after measurements.
+- **Acceptance Criteria:** Tuned profiles improve measured frame time or stability on target low-tier hardware without unacceptable visual regressions.
+- **Testing Requirements:** Repeat TASK-006 measurements before and after tuning; check desktop and mobile.
+- **Definition of Done:** Before/after evidence and rollback considerations are documented.
+- **Execution Notes:** Not started.

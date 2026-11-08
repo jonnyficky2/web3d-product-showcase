@@ -1,0 +1,21 @@
+# TASK-101 — Initialize Three.js Scene
+
+- **Objective:** Create the browser WebGL scene foundation.
+- **Background:** The application needs a camera, renderer, lights, floor, and animation loop.
+- **Priority:** P1
+- **Status:** DONE
+- **Milestone:** MILESTONE-001
+- **Task type:** Feature
+- **Complexity:** M
+- **Created date:** 2026-11-09
+- **Dependencies:** None
+- **Requirements:** FR-001
+- **Scope:** Renderer, camera, scene, lighting, floor, render loop.
+- **Out of scope:** WebGPU and asset loading.
+- **Affected modules:** `index.html`
+- **Expected files:** `index.html`
+- **Implementation Guidance:** Preserve the browser-only scene setup and keep renderer initialization explicit.
+- **Acceptance criteria:** Renderer, camera, lighting, floor, and animation loop exist; source evidence is `index.html:106-137` and `266-275`.
+- **Testing requirements:** Browser load over HTTP; verify canvas and no initialization error.
+- **Definition of Done:** Source evidence recorded; no automated browser test exists.
+- **Execution notes:** Implemented in the current source.

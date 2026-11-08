@@ -1,0 +1,23 @@
+# TASK-006 — Measure Mobile Rendering Baseline
+
+- **Task ID:** TASK-006
+- **Title:** Measure mobile rendering baseline
+- **Milestone:** MILESTONE-002
+- **Priority:** P1
+- **Status:** TODO
+- **Type:** PERFORMANCE / RESEARCH
+- **Complexity:** S
+- **Created date:** 2026-11-09
+- **Related requirement IDs:** NFR-101
+- **Objective:** Record baseline FPS, frame time, draw calls, renderer memory, and device conditions before tuning.
+- **Background:** Current DPR, antialiasing, shadows, geometry, and continuous rendering may be expensive, but no measurements exist.
+- **Scope:** Select representative low-tier devices or throttled profiles and capture repeatable baseline measurements.
+- **Out of Scope:** Changing rendering settings or replacing the renderer.
+- **Dependencies:** TASK-101 DONE; TASK-105 DONE.
+- **Affected Modules:** `index.html`, performance audit documentation.
+- **Expected Files:** `docs/audit/PERFORMANCE_AUDIT.md`, optional profiling notes.
+- **Implementation Guidance:** Record device/browser, viewport, DPR, scene state, FPS, frame time, draw calls, and renderer memory where available.
+- **Acceptance Criteria:** Baseline measurements exist for at least one low-tier mobile profile and one desktop comparison; unknown metrics are explicitly labeled.
+- **Testing Requirements:** Browser Performance panel and renderer telemetry where available.
+- **Definition of Done:** Measurements are reproducible and published without claiming unmeasured targets.
+- **Execution Notes:** Not started.

@@ -1,0 +1,21 @@
+# TASK-105 — Orbit Interaction and Auto-Rotation
+
+- **Objective:** Enable camera exploration and idle product rotation.
+- **Background:** The showcase depends on responsive 360-degree exploration.
+- **Priority:** P1
+- **Status:** DONE
+- **Milestone:** MILESTONE-001
+- **Task type:** Feature
+- **Complexity:** M
+- **Created date:** 2026-11-09
+- **Dependencies:** TASK-101
+- **Requirements:** FR-003
+- **Scope:** OrbitControls, damping, zoom/polar limits, pan, cooldown, animation.
+- **Out of scope:** Reduced-motion JavaScript behavior.
+- **Affected modules:** `index.html`
+- **Expected files:** `index.html`
+- **Implementation Guidance:** Keep damping and limits explicit; coordinate manual controls with the idle rotation timer.
+- **Acceptance criteria:** Controls and idle loop exist; evidence `index.html:219-275`.
+- **Testing requirements:** Drag, zoom, pan, release, and observe cooldown in a browser.
+- **Definition of Done:** Source evidence exists; device profiling is pending.
+- **Execution notes:** Implemented; JS reduced-motion handling remains separate.

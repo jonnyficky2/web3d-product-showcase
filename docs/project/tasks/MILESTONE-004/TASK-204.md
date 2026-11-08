@@ -1,0 +1,21 @@
+# TASK-204 — Reduced-Motion 3D Behavior
+
+- **Objective:** Respect reduced-motion preference in forced 3D animation.
+- **Background:** CSS handles transitions, but JavaScript auto-rotation continues.
+- **Priority:** P1
+- **Status:** TODO
+- **Milestone:** MILESTONE-004
+- **Task type:** Accessibility
+- **Complexity:** S
+- **Created date:** 2026-11-09
+- **Dependencies:** TASK-105
+- **Requirements:** NFR-102
+- **Scope:** Media query detection and auto-rotation policy.
+- **Out of scope:** Removing user-controlled camera interaction.
+- **Affected modules:** `index.html`
+- **Expected files:** `index.html`, `docs/design/UX_FLOWS.md`
+- **Implementation Guidance:** Use a live media-query signal so preference changes can take effect without reload.
+- **Acceptance criteria:** Reduced-motion users do not receive forced continuous rotation.
+- **Testing requirements:** Toggle OS/browser preference and observe initial and changed states.
+- **Definition of Done:** Behavior and accessibility rationale documented.
+- **Execution notes:** Not started.

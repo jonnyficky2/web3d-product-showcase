@@ -1,0 +1,21 @@
+# TASK-103 — Product Switching and UI Sync
+
+- **Objective:** Synchronize selected product visibility and overlay content.
+- **Background:** Product tabs must change the visual product and its copy together.
+- **Priority:** P1
+- **Status:** DONE
+- **Milestone:** MILESTONE-001
+- **Task type:** Feature
+- **Complexity:** M
+- **Created date:** 2026-11-09
+- **Dependencies:** TASK-102
+- **Requirements:** FR-005
+- **Scope:** Product tab events, visibility, title, specs, CTA, pressed states.
+- **Out of scope:** Smooth camera tween.
+- **Affected modules:** `index.html`
+- **Expected files:** `index.html`
+- **Implementation Guidance:** Update scene visibility, DOM content, pressed state, and CTA from one product transition path.
+- **Acceptance criteria:** `updateProduct` updates scene and DOM; evidence `index.html:235-250`.
+- **Testing requirements:** Manually select all three tabs.
+- **Definition of Done:** Source evidence exists; automated test is pending.
+- **Execution notes:** Implemented; camera target currently snaps.

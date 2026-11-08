@@ -1,0 +1,21 @@
+# TASK-202 — Snapshot PNG Export
+
+- **Objective:** Export the current canvas as a PNG.
+- **Background:** Snapshot export is a planned product capability.
+- **Priority:** P2
+- **Status:** TODO
+- **Milestone:** MILESTONE-003
+- **Task type:** Feature
+- **Complexity:** M
+- **Created date:** 2026-11-09
+- **Dependencies:** TASK-201
+- **Requirements:** FR-104
+- **Scope:** Export control, stable rendered frame, DPR-aware output, user feedback.
+- **Out of scope:** Server uploads or image processing.
+- **Affected modules:** `index.html`
+- **Expected files:** `index.html`, `docs/product/FEATURE_SPECIFICATIONS.md`
+- **Implementation Guidance:** Export only after a valid rendered frame and keep output resolution tied to the renderer DPR policy.
+- **Acceptance criteria:** Downloaded PNG is non-blank and matches the active view.
+- **Testing requirements:** Test desktop/mobile DPR and rapid clicks.
+- **Definition of Done:** Export and failure behavior verified.
+- **Execution notes:** Not started.

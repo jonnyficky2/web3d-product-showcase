@@ -1,0 +1,21 @@
+# TASK-104 — Color Customization
+
+- **Objective:** Change the active product material color.
+- **Background:** Visitors need to preview Sand, Slate, and Rose variants.
+- **Priority:** P1
+- **Status:** DONE
+- **Milestone:** MILESTONE-001
+- **Task type:** Feature
+- **Complexity:** S
+- **Created date:** 2026-11-09
+- **Dependencies:** TASK-102
+- **Requirements:** FR-004
+- **Scope:** Palette, material updates, pressed-state synchronization.
+- **Out of scope:** Texture maps and color management calibration.
+- **Affected modules:** `index.html`
+- **Expected files:** `index.html`
+- **Implementation Guidance:** Update only the active product's color materials and keep swatch ARIA state synchronized.
+- **Acceptance criteria:** Active product materials update and swatch state changes; evidence `index.html:251-258`.
+- **Testing requirements:** Click all swatches for each product.
+- **Definition of Done:** Source evidence exists; automated test is pending.
+- **Execution notes:** Implemented.

@@ -1,0 +1,21 @@
+# TASK-205 — Documentation Reconciliation
+
+- **Objective:** Keep legacy docs and canonical docs consistent with source evidence.
+- **Background:** Existing documents contain useful details but some statuses and claims drift.
+- **Priority:** P1
+- **Status:** TODO
+- **Milestone:** MILESTONE-005
+- **Task type:** Documentation
+- **Complexity:** S
+- **Created date:** 2026-11-09
+- **Dependencies:** None
+- **Requirements:** NFR-103
+- **Scope:** Links, terminology, requirement status, and legacy references.
+- **Out of scope:** Rewriting useful historical documentation without evidence.
+- **Affected modules:** Markdown documentation.
+- **Expected files:** `README.md`, `docs/*.md`, `DOCUMENTATION_INDEX.md`.
+- **Implementation Guidance:** Treat source evidence and PROJECT_STATE as authoritative; preserve useful historical context.
+- **Acceptance criteria:** No contradictory completed-status claims remain without evidence.
+- **Testing requirements:** Markdown link, ID, and status checks.
+- **Definition of Done:** Reconciliation report records all unresolved unknowns.
+- **Execution notes:** Initial documentation system created; full reconciliation remains pending.

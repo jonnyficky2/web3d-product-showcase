@@ -1,0 +1,21 @@
+# TASK-003 — Add Browser Smoke Tests
+
+- **Objective:** Automate core interaction regression checks.
+- **Background:** No test runner or browser test exists.
+- **Priority:** P1
+- **Status:** TODO
+- **Milestone:** MILESTONE-002
+- **Task type:** QA
+- **Complexity:** M
+- **Created date:** 2026-11-09
+- **Dependencies:** TASK-001
+- **Requirements:** NFR-103
+- **Scope:** Load, product switch, color switch, resize, and CTA checks.
+- **Out of scope:** Full visual regression suite.
+- **Affected modules:** Application and test configuration.
+- **Expected files:** `package.json`, test files, CI configuration (technology pending).
+- **Implementation Guidance:** Choose the smallest browser test tool that supports the zero-build application and document the choice.
+- **Acceptance criteria:** Tests run reproducibly and fail on core regressions.
+- **Testing requirements:** Headless browser in CI and local mode.
+- **Definition of Done:** Test command documented and passing.
+- **Execution notes:** Tool choice is pending.

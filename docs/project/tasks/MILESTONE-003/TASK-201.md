@@ -1,0 +1,21 @@
+# TASK-201 — Smooth Product Camera Transitions
+
+- **Objective:** Tween camera target/product transition without snapping.
+- **Background:** Current `controls.target.set` changes target immediately.
+- **Priority:** P1
+- **Status:** TODO
+- **Milestone:** MILESTONE-003
+- **Task type:** UX
+- **Complexity:** M
+- **Created date:** 2026-11-09
+- **Dependencies:** TASK-103
+- **Requirements:** FR-103
+- **Scope:** Camera target tween, interruption handling, resize safety, auto-rotation coordination.
+- **Out of scope:** Snapshot export.
+- **Affected modules:** `index.html`
+- **Expected files:** `index.html`, `docs/design/UX_FLOWS.md`
+- **Implementation Guidance:** Use a cancellable target tween and preserve user input priority during transitions.
+- **Acceptance criteria:** Transition completes within approximately 350ms, remains responsive, and does not jitter on resize.
+- **Testing requirements:** Switch products repeatedly during and after interaction.
+- **Definition of Done:** Acceptance criteria manually verified and documented.
+- **Execution notes:** Not started.

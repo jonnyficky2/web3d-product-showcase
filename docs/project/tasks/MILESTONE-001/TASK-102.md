@@ -1,0 +1,21 @@
+# TASK-102 — Procedural Product Collection
+
+- **Objective:** Provide the three product groups.
+- **Background:** The showcase needs a speaker, headphones, and watch without local model assets.
+- **Priority:** P1
+- **Status:** DONE
+- **Milestone:** MILESTONE-001
+- **Task type:** Feature
+- **Complexity:** M
+- **Created date:** 2026-11-09
+- **Dependencies:** TASK-101
+- **Requirements:** FR-002
+- **Scope:** Procedural Three.js geometry and product registration.
+- **Out of scope:** GLTF loading and texture pipeline.
+- **Affected modules:** `index.html`
+- **Expected files:** `index.html`
+- **Implementation Guidance:** Keep product builders procedural and register visibility state in one product collection.
+- **Acceptance criteria:** Three product groups are created and registered; evidence `index.html:153-215`.
+- **Testing requirements:** Browser inspection confirms each product can be selected.
+- **Definition of Done:** All three groups exist with source evidence.
+- **Execution notes:** Implemented in the current source.
