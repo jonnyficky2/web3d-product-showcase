@@ -13,11 +13,11 @@ Current phase: prototype hardening before production readiness.
 | Status | Count |
 |---|---:|
 | DONE | 5 |
-| TODO | 10 |
+| TODO | 9 |
 | IN_PROGRESS | 0 |
 | BLOCKED | 0 |
 | IN_REVIEW | 0 |
-| TESTING | 1 |
+| TESTING | 2 |
 | CANCELLED | 0 |
 | **Total** | **16** |
 
@@ -33,7 +33,7 @@ Current phase: prototype hardening before production readiness.
 | Milestone | Objective | Progress | Status | Tasks |
 |---|---|---:|---|---|
 | MILESTONE-001 | Core WebGL showcase foundation | 100% | DONE | TASK-101–TASK-105 |
-| MILESTONE-002 | Runtime reliability and mobile quality | 10% | IN_PROGRESS | TASK-001, TASK-002, TASK-003, TASK-006, TASK-007 |
+| MILESTONE-002 | Runtime reliability and mobile quality | 20% | IN_PROGRESS | TASK-001, TASK-002, TASK-003, TASK-006, TASK-007 |
 | MILESTONE-003 | Premium camera motion and export | 0% | TODO | TASK-201, TASK-202 |
 | MILESTONE-004 | Resource lifecycle and accessibility hardening | 0% | TODO | TASK-203, TASK-204 |
 | MILESTONE-005 | Release and documentation operations | 25% | IN_PROGRESS | TASK-004, TASK-205 |
@@ -44,7 +44,7 @@ Current phase: prototype hardening before production readiness.
 2. **TASK-004** — decide the production dependency delivery strategy.
 3. **TASK-205** — reconcile legacy documentation with source evidence.
 
-Eligible now: `TASK-004`, `TASK-006`, `TASK-205`.
+Eligible now: `TASK-004`, `TASK-205`.
 
 ## 6. Development Task Registry
 
@@ -168,15 +168,15 @@ Eligible now: `TASK-004`, `TASK-006`, `TASK-205`.
 
 - **Description:** Record repeatable baseline FPS, frame time, draw calls, renderer memory, device/browser, viewport, and DPR data before performance tuning.
 - **Priority:** High (P1).
-- **Status:** TODO.
+- **Status:** TESTING.
 - **Dependencies:** TASK-101, TASK-105.
 - **Acceptance Criteria:**
   - At least one low-tier mobile profile and one desktop comparison are measured.
   - Scene state and test conditions are recorded with each measurement.
   - Unavailable metrics are marked UNKNOWN rather than estimated.
-- **Progress:** 0%.
+- **Progress:** 50%.
 - **Related Docs:** [Task detail](tasks/MILESTONE-002/TASK-006.md), [Performance Audit](../audit/PERFORMANCE_AUDIT.md), [QA Report](../testing/QA_REPORT.md).
-- **Notes:** This is the first step in the split performance workflow and does not change source code.
+- **Notes:** Source baseline and reproduction procedure are documented. Runtime device measurements remain pending; do not mark DONE.
 
 ### TASK-007 — Tune Adaptive Rendering Quality
 
@@ -310,7 +310,7 @@ No task is currently marked `BLOCKED`. `TASK-001` is in TESTING pending browser 
 
 ### TASK-001 — Add WebGL and Module Fallback
 
-Execute `TASK-006` next. `TASK-001` is already implemented and awaiting browser verification; TASK-006 is independently eligible and provides the evidence required by the next performance tasks.
+TASK-006 is currently in TESTING. After browser/device profiling is available, complete its remaining evidence before executing TASK-002 or TASK-007.
 
 ## 9. Completed Tasks
 

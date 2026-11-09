@@ -4,7 +4,7 @@
 - **Title:** Measure mobile rendering baseline
 - **Milestone:** MILESTONE-002
 - **Priority:** P1
-- **Status:** TODO
+- **Status:** TESTING
 - **Type:** PERFORMANCE / RESEARCH
 - **Complexity:** S
 - **Created date:** 2026-11-09
@@ -17,7 +17,7 @@
 - **Affected Modules:** `index.html`, performance audit documentation.
 - **Expected Files:** `docs/audit/PERFORMANCE_AUDIT.md`, optional profiling notes.
 - **Implementation Guidance:** Record device/browser, viewport, DPR, scene state, FPS, frame time, draw calls, and renderer memory where available.
-- **Acceptance Criteria:** Baseline measurements exist for at least one low-tier mobile profile and one desktop comparison; unknown metrics are explicitly labeled.
+- **Acceptance Criteria:** Source baseline and measurement procedure are documented; runtime measurements for at least one low-tier mobile profile and one desktop comparison remain pending; unknown metrics are explicitly labeled.
 - **Testing Requirements:** Browser Performance panel and renderer telemetry where available.
 - **Definition of Done:** Measurements are reproducible and published without claiming unmeasured targets.
-- **Execution Notes:** Not started.
+- **Execution Notes:** Captured source-verified renderer settings and structural mesh estimate in `docs/audit/PERFORMANCE_AUDIT.md`. Browser/device measurement remains pending; task is not DONE.

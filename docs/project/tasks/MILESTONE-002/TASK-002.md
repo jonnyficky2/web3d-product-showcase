@@ -13,7 +13,7 @@
 - **Background:** DPR 2, antialiasing, 2048 shadows, and continuous rendering may be expensive, but tuning needs agreed thresholds.
 - **Scope:** Define target FPS/frame-time range, draw-call budget, DPR policy, and acceptable quality trade-offs from TASK-006.
 - **Out of Scope:** Implementing rendering changes or adding a new renderer.
-- **Dependencies:** TASK-006 TODO; do not execute before baseline evidence.
+- **Dependencies:** TASK-006 TESTING; do not execute before runtime baseline evidence is complete.
 - **Affected Modules:** Performance documentation and future renderer tuning.
 - **Expected Files:** `docs/audit/PERFORMANCE_AUDIT.md`, `docs/project/PROJECT_STATE.md`.
 - **Implementation Guidance:** Use measured baseline values and distinguish targets from guarantees.

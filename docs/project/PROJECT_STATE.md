@@ -38,6 +38,6 @@ The core interactive scene exists in `index.html`. Production readiness work rem
 ## Current priorities
 
 1. Verify TASK-001 in a browser with WebGL disabled and CDN/module failure.
-2. Profile and reduce mobile GPU cost.
+2. Complete TASK-006 browser/device measurements, then define and implement the performance budget/tuning tasks.
 3. Establish browser smoke tests and dependency governance.
 4. Synchronize legacy documentation with this state document.

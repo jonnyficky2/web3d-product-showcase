@@ -21,7 +21,7 @@
 - **Dependencies:** TASK-101; TASK-003 also depends on TASK-001.
 - **Entry criteria:** Core scene exists.
 - **Exit criteria:** Failure paths, target-device baseline, adaptive tuning, and smoke tests are documented and verified.
-- **Completion:** 10%.
+- **Completion:** 20%.
 - **Status:** IN_PROGRESS.
 
 ## MILESTONE-003 — Premium Interaction and Export

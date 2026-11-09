@@ -26,7 +26,7 @@ flowchart TD
 
 ## Independent eligible tasks
 
-`TASK-001`, `TASK-004`, and `TASK-205` can begin without an unfinished blocking dependency. `TASK-006` is eligible because TASK-101 and TASK-105 are DONE.
+`TASK-004` and `TASK-205` can begin without an unfinished blocking dependency. TASK-001 and TASK-006 are currently in TESTING. TASK-002 and TASK-007 remain dependency-gated until TASK-006 runtime evidence is complete.
 
 ## Circular dependency check
 

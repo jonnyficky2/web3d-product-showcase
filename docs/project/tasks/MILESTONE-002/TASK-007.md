@@ -13,7 +13,7 @@
 - **Background:** Tuning should follow a recorded baseline instead of assumptions.
 - **Scope:** Adaptive DPR, shadow quality, geometry quality, and render-loop policy as justified by TASK-006.
 - **Out of Scope:** WebGPU migration, new asset pipeline, or unrelated visual redesign.
-- **Dependencies:** TASK-006 TODO; do not execute until baseline evidence exists.
+- **Dependencies:** TASK-006 TESTING; do not execute until runtime baseline evidence exists.
 - **Affected Modules:** `index.html`, performance documentation.
 - **Expected Files:** `index.html`, `docs/audit/PERFORMANCE_AUDIT.md`, `docs/project/PROJECT_STATE.md`.
 - **Implementation Guidance:** Preserve interaction quality, document thresholds, and compare before/after measurements.
