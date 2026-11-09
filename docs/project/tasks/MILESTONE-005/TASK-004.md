@@ -3,7 +3,7 @@
 - **Objective:** Decide how Three.js dependencies are versioned and delivered in production.
 - **Background:** Current runtime depends directly on jsDelivr and has no lockfile.
 - **Priority:** P1
-- **Status:** TODO
+- **Status:** DONE
 - **Milestone:** MILESTONE-005
 - **Task type:** Architecture / Release
 - **Complexity:** M
@@ -15,7 +15,7 @@
 - **Affected modules:** Import Map, release docs.
 - **Expected files:** `package.json` or deployment docs, ADR, security docs.
 - **Implementation Guidance:** Compare reproducibility, integrity, offline behavior, update cost, and rollback for each option.
-- **Acceptance criteria:** Decision records availability, integrity, update process, and rollback.
+- **Acceptance criteria:** Decision records availability, integrity, update process, and rollback; ADR-002 records the selected prototype and production strategy.
 - **Testing requirements:** Reproducible local and production-like load.
-- **Definition of Done:** ADR approved before implementation.
-- **Execution notes:** Not started.
+- **Definition of Done:** ADR approved before implementation and no dependency migration performed within this task.
+- **Execution notes:** ADR-002 accepted: retain pinned CDN for the prototype; require package-managed local bundle or exact vendored modules before production. Migration remains a future task.

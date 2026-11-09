@@ -12,8 +12,8 @@ Current phase: prototype hardening before production readiness.
 
 | Status | Count |
 |---|---:|
-| DONE | 5 |
-| TODO | 9 |
+| DONE | 6 |
+| TODO | 8 |
 | IN_PROGRESS | 0 |
 | BLOCKED | 0 |
 | IN_REVIEW | 0 |
@@ -36,15 +36,14 @@ Current phase: prototype hardening before production readiness.
 | MILESTONE-002 | Runtime reliability and mobile quality | 20% | IN_PROGRESS | TASK-001, TASK-002, TASK-003, TASK-006, TASK-007 |
 | MILESTONE-003 | Premium camera motion and export | 0% | TODO | TASK-201, TASK-202 |
 | MILESTONE-004 | Resource lifecycle and accessibility hardening | 0% | TODO | TASK-203, TASK-204 |
-| MILESTONE-005 | Release and documentation operations | 25% | IN_PROGRESS | TASK-004, TASK-205 |
+| MILESTONE-005 | Release and documentation operations | 50% | IN_PROGRESS | TASK-004, TASK-205 |
 
 ## 5. Current Priorities
 
 1. **TASK-006** — establish real mobile performance evidence.
-2. **TASK-004** — decide the production dependency delivery strategy.
-3. **TASK-205** — reconcile legacy documentation with source evidence.
+2. **TASK-205** — reconcile legacy documentation with source evidence.
 
-Eligible now: `TASK-004`, `TASK-205`.
+Eligible now: `TASK-205`.
 
 ## 6. Development Task Registry
 
@@ -122,7 +121,7 @@ Eligible now: `TASK-004`, `TASK-205`.
 
 ### MILESTONE-002 — Runtime Reliability and Mobile Quality
 
-### Recommended: TASK-006 — Measure Mobile Rendering Baseline
+### TASK-001 — Add WebGL and Module Fallback
 
 - **Description:** Add visible, accessible fallback handling for WebGL initialization failure and Three.js/CDN module loading failure.
 - **Priority:** Critical (P0).
@@ -140,13 +139,13 @@ Eligible now: `TASK-004`, `TASK-205`.
 
 - **Description:** Convert measured mobile rendering behavior into explicit FPS, frame-time, draw-call, DPR, and visual-quality guardrails.
 - **Priority:** Critical (P0).
-- **Status:** TODO.
+- **Status:** DONE.
 - **Dependencies:** TASK-006.
 - **Acceptance Criteria:**
   - A budget is documented for at least one low-tier mobile profile.
   - A desktop comparison and quality trade-offs are recorded.
   - Every target is traceable to TASK-006 measurements rather than guesses.
-- **Progress:** 0%.
+- **Progress:** 100%.
 - **Related Docs:** [Task detail](tasks/MILESTONE-002/TASK-002.md), [Performance Audit](../audit/PERFORMANCE_AUDIT.md), [Web3D Audit](../audit/WEB3D_AUDIT.md).
 - **Notes:** This task defines guardrails; TASK-007 implements adaptive tuning.
 
@@ -258,15 +257,15 @@ Eligible now: `TASK-004`, `TASK-205`.
 
 - **Description:** Decide how Three.js and add-on dependencies will be versioned, delivered, integrity-checked, updated, and rolled back in production.
 - **Priority:** High (P1).
-- **Status:** TODO.
+- **Status:** DONE.
 - **Dependencies:** None.
 - **Acceptance Criteria:**
   - Local bundle, vendored module, and controlled CDN options are compared.
   - Availability, integrity, offline behavior, update cost, and rollback are documented.
   - An ADR records the selected strategy before implementation.
-- **Progress:** 0%.
+- **Progress:** 100%.
 - **Related Docs:** [Task detail](tasks/MILESTONE-005/TASK-004.md), [Tech Stack](../architecture/TECH_STACK.md), [Build and Deployment](../operations/BUILD_DEPLOYMENT.md).
-- **Notes:** This is a decision task; it must not silently migrate the application.
+- **Notes:** ADR-002 accepted. Prototype remains CDN-based; production migration is explicitly future work.
 
 ### TASK-205 — Documentation Reconciliation
 
@@ -308,7 +307,7 @@ No task is currently marked `BLOCKED`. `TASK-001` is in TESTING pending browser 
 
 ## 8. Recommended Next Task
 
-### TASK-001 — Add WebGL and Module Fallback
+### Recommended: TASK-205 — Documentation Reconciliation
 
 TASK-006 is currently in TESTING. After browser/device profiling is available, complete its remaining evidence before executing TASK-002 or TASK-007.
 

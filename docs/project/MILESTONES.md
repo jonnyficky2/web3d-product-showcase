@@ -57,5 +57,5 @@
 - **Dependencies:** None.
 - **Entry criteria:** Repository and current docs are inventoried.
 - **Exit criteria:** ADR/policy exists and documentation checks pass.
-- **Completion:** 25%.
+- **Completion:** 50%.
 - **Status:** IN_PROGRESS.

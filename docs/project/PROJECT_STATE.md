@@ -24,7 +24,7 @@ The core interactive scene exists in `index.html`. Production readiness work rem
 - Loading state.
 - Snapshot export.
 - Automated tests, linting, and CI.
-- Production dependency strategy, deployment configuration, and security headers.
+- Production dependency migration, deployment configuration, and security headers. ADR-002 now defines the strategy; implementation remains pending.
 - Smooth camera tween between products.
 
 ## Known risks

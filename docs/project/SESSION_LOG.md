@@ -20,3 +20,10 @@
 - Added reproducible browser measurement procedure and low-tier/desktop matrix.
 - Runtime FPS, frame time, actual draw calls, and GPU memory remain `UNKNOWN` because browser/device profiling is unavailable.
 - Task status is `TESTING`; TASK-002 and TASK-007 remain dependency-gated.
+
+## 2026-11-09 — TASK-004 dependency strategy
+
+- Compared direct CDN, vendored modules, and package-managed local bundle options.
+- Accepted ADR-002: keep pinned CDN for the prototype; require reproducible local delivery before production.
+- No application source or dependency delivery was migrated.
+- TASK-004 is complete with ADR evidence.
