@@ -41,12 +41,12 @@ Tujuan utama alur ini adalah memberikan pengalaman eksplorasi produk yang imersi
 ### Tahap 1: Initial Landing & Hero Experience
 1. **Akses URL:** Pengguna membuka tautan showcase web melalui peramban desktop atau mobile.
 2. **Pemuatan Panggung 3D:**
-   - Kanvas WebGL diinisialisasi secara instan (tanpa layar loading panjang berkat ukuran aset ringan $\approx 21 \text{ KB}$).
+   - Kanvas WebGL diinisialisasi dari geometri procedural tanpa local model/texture assets; durasi loading aktual belum diukur.
    - Produk default (**Sonic One Speaker**) muncul di tengah panggung dengan material bawaan (Sand `#c5a982`).
    - Lampu studio menyoroti detail bodi produk, menciptakan bayangan lembut pada lantai panggung.
 3. **Auto-Rotate Indikator:**
    - Panggung berputar secara perlahan dan halus pada sumbu Y (kecepatan $0.22 \text{ rad/s}$).
-   - Status visual `"Interactive preview"` dengan lampu indikator hijau berdenyut di pojok kiri atas menginformasikan bahwa objek dapat digerakkan secara langsung.
+   - Status visual `"Interactive preview"` dengan indikator hijau di pojok kiri atas menginformasikan bahwa objek dapat digerakkan secara langsung.
    - UI overlay menampilkan teks produk, spesifikasi utama (360° Spatial Sound, 24 h Battery, IP67 Waterproof), dan panel pemilih warna.
 
 ### Tahap 2: 3D Spatial Exploration (360° Navigation)

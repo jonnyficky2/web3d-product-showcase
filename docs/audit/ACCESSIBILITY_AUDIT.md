@@ -8,7 +8,7 @@
 
 ## Findings
 
-- WebGL failure has no accessible fallback.
+- WebGL fallback is implemented but browser failure-path verification is pending.
 - JavaScript auto-rotation ignores reduced-motion preference.
 - Canvas has no dedicated accessible description or keyboard 3D interaction model.
 - The `Support` navigation target does not exist.

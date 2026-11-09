@@ -27,3 +27,10 @@
 - Accepted ADR-002: keep pinned CDN for the prototype; require reproducible local delivery before production.
 - No application source or dependency delivery was migrated.
 - TASK-004 is complete with ADR evidence.
+
+## 2026-11-09 — TASK-205 documentation reconciliation
+
+- Reconciled legacy README, PRD, architecture, user-flow, taskboard, QA, accessibility, security, and audit claims with current source evidence.
+- Corrected production-ready, Google Fonts, loading-size, lighting terminology, fallback, and release-status drift.
+- Validated links and preserved unresolved runtime/device limitations as `PENDING` or `UNKNOWN`.
+- TASK-205 is complete.

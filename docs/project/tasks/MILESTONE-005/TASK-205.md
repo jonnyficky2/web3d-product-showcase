@@ -3,7 +3,7 @@
 - **Objective:** Keep legacy docs and canonical docs consistent with source evidence.
 - **Background:** Existing documents contain useful details but some statuses and claims drift.
 - **Priority:** P1
-- **Status:** TODO
+- **Status:** DONE
 - **Milestone:** MILESTONE-005
 - **Task type:** Documentation
 - **Complexity:** S
@@ -18,4 +18,4 @@
 - **Acceptance criteria:** No contradictory completed-status claims remain without evidence.
 - **Testing requirements:** Markdown link, ID, and status checks.
 - **Definition of Done:** Reconciliation report records all unresolved unknowns.
-- **Execution notes:** Initial documentation system created; full reconciliation remains pending.
+- **Execution notes:** Reconciled legacy production/font/loading/lighting/fallback claims with source evidence. Updated canonical requirements, audits, QA notes, and legacy taskboard. Remaining runtime/device verification is explicitly marked PENDING.

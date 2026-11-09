@@ -2,9 +2,9 @@
 ## Forma — Interactive 3D Web Product Showcase
 
 - **Document Version:** 1.1.0
-- **Status:** Approved / Production Ready
+- **Status:** Prototype / Pre-production hardening
 - **Author:** Senior Software Architect & Technical Product Manager
-- **Target Release:** Q1 2025
+- **Target Release:** UNKNOWN; deployment and production verification are not configured
 - **Technology Base:** Three.js (r169), HTML5, CSS3, ES6+
 
 ---

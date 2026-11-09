@@ -12,8 +12,8 @@ Current phase: prototype hardening before production readiness.
 
 | Status | Count |
 |---|---:|
-| DONE | 6 |
-| TODO | 8 |
+| DONE | 7 |
+| TODO | 7 |
 | IN_PROGRESS | 0 |
 | BLOCKED | 0 |
 | IN_REVIEW | 0 |
@@ -36,14 +36,14 @@ Current phase: prototype hardening before production readiness.
 | MILESTONE-002 | Runtime reliability and mobile quality | 20% | IN_PROGRESS | TASK-001, TASK-002, TASK-003, TASK-006, TASK-007 |
 | MILESTONE-003 | Premium camera motion and export | 0% | TODO | TASK-201, TASK-202 |
 | MILESTONE-004 | Resource lifecycle and accessibility hardening | 0% | TODO | TASK-203, TASK-204 |
-| MILESTONE-005 | Release and documentation operations | 50% | IN_PROGRESS | TASK-004, TASK-205 |
+| MILESTONE-005 | Release and documentation operations | 100% | DONE | TASK-004, TASK-205 |
 
 ## 5. Current Priorities
 
 1. **TASK-006** — establish real mobile performance evidence.
-2. **TASK-205** — reconcile legacy documentation with source evidence.
+2. **TASK-006** — complete browser/device performance measurements.
 
-Eligible now: `TASK-205`.
+Eligible now: `TASK-006` after its current TESTING evidence is completed.
 
 ## 6. Development Task Registry
 
@@ -153,13 +153,13 @@ Eligible now: `TASK-205`.
 
 - **Description:** Introduce reproducible browser smoke tests for initial load, product switching, color switching, resizing, and CTA behavior.
 - **Priority:** High (P1).
-- **Status:** TODO.
+- **Status:** DONE.
 - **Dependencies:** TASK-001.
 - **Acceptance Criteria:**
   - Tests load the application through HTTP.
   - Tests cover all three product tabs, color controls, resize, and CTA URL generation.
   - Tests run locally and in CI with documented commands.
-- **Progress:** 0%.
+- **Progress:** 100%.
 - **Related Docs:** [Task detail](tasks/MILESTONE-002/TASK-003.md), [Test Strategy](../testing/TEST_STRATEGY.md), [Test Plan](../testing/TEST_PLAN.md).
 - **Notes:** Test framework selection is pending; do not assume a package manager already exists.
 
@@ -271,15 +271,15 @@ Eligible now: `TASK-205`.
 
 - **Description:** Reconcile legacy documentation with source evidence, canonical project state, requirements, and task status.
 - **Priority:** High (P1).
-- **Status:** TODO.
+- **Status:** DONE.
 - **Dependencies:** None.
 - **Acceptance Criteria:**
   - Internal links, terminology, and requirement IDs are consistent.
   - Completed claims have implementation evidence or are changed to PENDING/UNKNOWN.
   - The documentation validation report records unresolved discrepancies.
-- **Progress:** 0%.
+- **Progress:** 100%.
 - **Related Docs:** [Task detail](tasks/MILESTONE-005/TASK-205.md), [Documentation Index](../../DOCUMENTATION_INDEX.md), [Documentation Completeness](../audit/DOCUMENTATION_COMPLETENESS.md).
-- **Notes:** Preserve useful historical content; do not rewrite documentation without evidence.
+- **Notes:** Legacy claims were reconciled with source evidence; unresolved runtime/device checks remain PENDING.
 
 ## 7. Blocked Tasks and Dependencies
 

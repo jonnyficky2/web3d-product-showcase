@@ -9,7 +9,7 @@
 
 ## Gaps
 
-- No WebGPU path or renderer fallback.
+- No WebGPU path; renderer fallback is implemented, with browser failure-path verification pending.
 - No GLTF/GLB, texture, HDRI, compression, cache, instancing, or LOD pipeline.
 - High segment counts and continuous rendering need profiling.
 - No complete disposal lifecycle.

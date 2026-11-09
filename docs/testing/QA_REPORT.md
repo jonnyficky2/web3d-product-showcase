@@ -16,4 +16,4 @@ Static repository inspection and source-level verification. Browser interaction,
 
 ## QA conclusion
 
-The project is not fully release-verified. Manual browser validation and fallback implementation remain required.
+The project is not fully release-verified. Manual browser validation of the implemented fallback and runtime/device profiling remain required.

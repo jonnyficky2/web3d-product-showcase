@@ -6,7 +6,7 @@ Status: implemented. Covers procedural scene, controls, products, materials, and
 
 ## Phase 2 — Reliability and mobile quality
 
-Status: pending. Add runtime fallback, loading state, adaptive DPR, profiling, reduced motion, and browser smoke tests.
+Status: in progress. Runtime fallback is implemented; loading state, adaptive DPR, profiling, reduced motion, and browser smoke tests remain pending.
 
 ## Phase 3 — Premium interaction
 

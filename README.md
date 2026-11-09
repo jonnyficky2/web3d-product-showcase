@@ -6,7 +6,7 @@
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
 
-> Showroom produk web 3D interaktif berperforma tinggi dengan rendering fotorealistik berbasis Three.js, kontrol kamera orbit 360 derajat, kustomisasi material warna *real-time*, dan antarmuka *glassmorphic* responsif.
+> Showroom produk web 3D interaktif berbasis Three.js dengan kontrol kamera orbit 360 derajat, kustomisasi material warna *real-time*, dan antarmuka *glassmorphic* responsif.
 
 ---
 
@@ -18,7 +18,7 @@
   - **02. Studio Arc:** Over-ear Headphone ergonomis dengan headband Catmull-Rom dan acoustic plates.
   - **03. Form Watch:** Smartwatch kontemporer dengan layar digital berpendar (*emissive display*) dan tali silikon bertekstur.
 - **🎨 Real-Time Material & Color Customizer:** Pergantian varian warna fisik (*Sand*, *Slate*, dan *Rose*) secara instan pada material PBR (*Physically Based Rendering*) dengan pantulan *clearcoat* dinamis.
-- **💡 Cinematic 4-Point Lighting & Soft Shadows:** Konfigurasi pencahayaan studio terkalibrasi (Key Light, Rim Light, Fill Light, dan Ambient Light) dengan bayangan lembut beresolusi tinggi (*PCFSoftShadowMap* 2048x2048).
+- **💡 Studio Lighting & Soft Shadows:** Konfigurasi pencahayaan studio dengan key, rim, fill, dan ambient light serta bayangan lembut (*PCFSoftShadowMap* 2048x2048).
 - **⏱️ Intelligent Idle Auto-Rotate:** Produk berputar secara otomatis dan halus saat dalam kondisi diam, berhenti seketika saat disentuh, dan berlanjut kembali setelah jeda *cooldown*.
 - **📱 Fully Responsive Glassmorphic UI:** Antarmuka modern dengan efek *frosted glass* (`backdrop-filter`) yang menyesuaikan tata letak secara dinamis dari layar smartphone hingga monitor desktop layar lebar.
 - **⚡ Zero-Build Architecture:** Berjalan langsung di peramban tanpa memerlukan kompilasi (*no Webpack, Vite, or npm install required*).
@@ -67,10 +67,10 @@ Jika Anda lebih terbiasa dengan ekosistem Node.js atau ekstensi editor:
 web3d-product-showcase/
 ├── index.html              # Aplikasi lengkap (HTML5, CSS3, dan skrip Three.js)
 ├── README.md               # Dokumentasi utama dan panduan cepat proyek
-└── docs/                   # Dokumentasi arsitektur dan teknis mendalam
+└── docs/                   # Dokumentasi produk, arsitektur, QA, security, audit, dan task management
     ├── PRD.md              # Product Requirement Document (PRD)
     ├── ARCHITECTURE.md     # Spesifikasi arsitektur sistem & rendering Three.js
-    └── USER_FLOW.md        # Diagram alir interaksi & state lifecycle pengguna
+    └── USER_FLOW.md        # Legacy diagram alir interaksi pengguna
 ```
 
 ---

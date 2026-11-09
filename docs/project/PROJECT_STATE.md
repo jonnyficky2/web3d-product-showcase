@@ -33,11 +33,11 @@ The core interactive scene exists in `index.html`. Production readiness work rem
 - Continuous rendering with DPR up to 2 and 2048 shadow map.
 - Reduced-motion preference does not disable JavaScript auto-rotation.
 - No lifecycle disposal path.
-- Documentation previously overstated some completed features; this system distinguishes implemented versus planned work.
+- Legacy documentation claims were reconciled on 2026-11-09; runtime/device verification remains explicitly pending.
 
 ## Current priorities
 
 1. Verify TASK-001 in a browser with WebGL disabled and CDN/module failure.
 2. Complete TASK-006 browser/device measurements, then define and implement the performance budget/tuning tasks.
 3. Establish browser smoke tests and dependency governance.
-4. Synchronize legacy documentation with this state document.
+4. Complete browser/device verification for TASK-001 and TASK-006.

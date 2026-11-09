@@ -44,7 +44,7 @@ Aplikasi **Forma** dirancang menggunakan arsitektur web modern *zero-build* yang
 |  |  +--------------------------+           +--------------------------------+  |  |
 |  |  |     Interaction Loop     |           |        Camera & Lighting       |  |  |
 |  |  |  - OrbitControls Damping |---------->|  - PerspectiveCamera (34 deg)  |  |  |
-|  |  |  - Delta-time Calculation|           |  - 4-Point Lighting Rig        |  |  |
+|  |  |  - Delta-time Calculation|           |  - Studio Lighting Rig         |  |  |
 |  |  |  - Auto-rotation Engine  |           |  - Floor Shadow Receiver       |  |  |
 |  |  +--------------------------+           +--------------------------------+  |  |
 |  +-----------------------------------------------------------------------------+  |
@@ -173,8 +173,8 @@ renderer.toneMappingExposure = 1.15;
 - **Posisi Awal:** `(X: 4.5, Y: 3.0, Z: 7.5)`
 - **Kliping Bidang:** `Near: 0.1`, `Far: 100`
 
-### 4.3 Desain Rig Pencahayaan (4-Point Lighting Rig)
-Pencahayaan studio diatur secara presisi untuk meniru teknik fotografi produk komersial:
+### 4.3 Desain Rig Pencahayaan (Studio Lighting Rig)
+Pencahayaan studio menggunakan tiga sumber lampu eksplisit dan satu ambient light:
 1. **Key Light (Utama):** `THREE.DirectionalLight` berwarna hangat (`0xffe5c7`, intensitas `3.3`) pada posisi `(-4, 7, 5)`. Cahaya ini menghasilkan bayangan tajam terkontrol dengan *shadow bias* `-0.00015` untuk mengeliminasi artefak *shadow acne*.
 2. **Rim Light (Siluet):** `THREE.DirectionalLight` berwarna sejuk (`0x83a8dc`, intensitas `2.5`) pada posisi `(5, 3, -4)`. Menyorot tepi kontur produk untuk memisahkannya dari latar belakang gelap.
 3. **Fill Light (Pengisi):** `THREE.PointLight` bernuansa biru langit (`0x9ab9dd`, intensitas `18`, radius `12`) pada posisi `(-3, 2, -1)`. Menghilangkan area bayangan yang terlalu pekat dan menonjolkan detail permukaan samping.

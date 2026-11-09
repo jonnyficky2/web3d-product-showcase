@@ -25,18 +25,18 @@
 - 3 produk procedural tampil dengan switching visibility.
 - PBR materials (clearcoat) + real-time color swatches bekerja saat user mengganti warna.
 - OrbitControls terasa halus (damping), ada clamped zoom & auto-rotate idle resume.
-- UI/UX FORMA: branding, monogram **FM**, tipografi Google Fonts (Plus Jakarta Sans & Syne), glassmorphism, serta konten harga/spec berubah dinamis saat tab diklik.
+- UI/UX FORMA: branding, glassmorphism, serta konten harga/spec berubah dinamis saat tab diklik. Font Google/Plus Jakarta Sans/Syne tidak ditemukan di source; sistem fallback digunakan.
 
 ### Task Breakdown (M1)
 
 | Task ID | Area | Status | Progress % | Acceptance Criteria (detail) | Related Docs |
 |---:|---|---|---:|---|---|
 | 01 | Core Setup | DONE | 100% | `index.html` memuat Three.js via **Import Map**; kanvas render muncul tanpa error modul; layout dasar tidak mengganggu interaksi canvas. | `index.html` |
-| 02 | Rendering | DONE | 100% | Lighting **4-point** berfungsi; `PCFSoftShadowMap` aktif; `ACESFilmicToneMapping` menghasilkan tampilan sinematik konsisten; shadow tidak “berkedip” saat orbit/resize. | `index.html`, `docs/ARCHITECTURE.md` |
+| 02 | Rendering | DONE | 100% | Studio lighting rig berfungsi; `PCFSoftShadowMap` aktif; `ACESFilmicToneMapping` digunakan; shadow behavior saat orbit/resize masih membutuhkan browser verification. | `index.html`, `docs/ARCHITECTURE.md` |
 | 03 | 3D Content | DONE | 100% | Tiga produk (Sonic One, Studio Arc, Form Watch) terbangun dengan geometri prosedural; visibility switch antar produk berjalan instan; tidak ada produk yang “menyatu”/tertinggal. | `index.html` |
 | 04 | Materials & Lookdev | DONE | 100% | Menggunakan `MeshPhysicalMaterial` dengan `clearcoat`; **real-time color swatches** mengubah material inti tanpa re-render model; state swatch & warna sinkron. | `index.html`, `docs/PRD.md` |
 | 05 | Interaction | DONE | 100% | OrbitControls: damping halus; clamped zoom mencegah kliping; auto-rotate berhenti saat user interaksi dan resume dengan cooldown; batas polar mencegah kamera menembus lantai. | `index.html`, `docs/USER_FLOW.md` |
-| 06 | UI/UX Revamp | DONE | 100% | UI glassmorphism rapi; branding FORMA + monogram FM muncul; Plus Jakarta Sans (body) dan Syne (heading) terpakai; harga/spec/deskripsi berubah dinamis sesuai tab; transisi fade & slide terasa halus. | `index.html`, `docs/USER_FLOW.md`, `README.md` |
+| 06 | UI/UX Revamp | DONE | 100% | UI glassmorphism rapi; branding FORMA muncul; harga/spec/deskripsi berubah dinamis sesuai tab. Font Google dan transisi fade/slide tidak terverifikasi di source. | `index.html`, `docs/USER_FLOW.md`, `README.md` |
 
 ---
 
