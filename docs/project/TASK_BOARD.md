@@ -13,11 +13,11 @@ Current phase: prototype hardening before production readiness.
 | Status | Count |
 |---|---:|
 | DONE | 5 |
-| TODO | 11 |
+| TODO | 10 |
 | IN_PROGRESS | 0 |
 | BLOCKED | 0 |
 | IN_REVIEW | 0 |
-| TESTING | 0 |
+| TESTING | 1 |
 | CANCELLED | 0 |
 | **Total** | **16** |
 
@@ -33,19 +33,18 @@ Current phase: prototype hardening before production readiness.
 | Milestone | Objective | Progress | Status | Tasks |
 |---|---|---:|---|---|
 | MILESTONE-001 | Core WebGL showcase foundation | 100% | DONE | TASK-101–TASK-105 |
-| MILESTONE-002 | Runtime reliability and mobile quality | 0% | TODO | TASK-001, TASK-002, TASK-003, TASK-006, TASK-007 |
+| MILESTONE-002 | Runtime reliability and mobile quality | 10% | IN_PROGRESS | TASK-001, TASK-002, TASK-003, TASK-006, TASK-007 |
 | MILESTONE-003 | Premium camera motion and export | 0% | TODO | TASK-201, TASK-202 |
 | MILESTONE-004 | Resource lifecycle and accessibility hardening | 0% | TODO | TASK-203, TASK-204 |
 | MILESTONE-005 | Release and documentation operations | 25% | IN_PROGRESS | TASK-004, TASK-205 |
 
 ## 5. Current Priorities
 
-1. **TASK-001** — highest runtime reliability risk; dependencies are complete.
-2. **TASK-006** — establish real mobile performance evidence.
-3. **TASK-004** — decide the production dependency delivery strategy.
-4. **TASK-205** — reconcile legacy documentation with source evidence.
+1. **TASK-006** — establish real mobile performance evidence.
+2. **TASK-004** — decide the production dependency delivery strategy.
+3. **TASK-205** — reconcile legacy documentation with source evidence.
 
-Eligible now: `TASK-001`, `TASK-004`, `TASK-006`, `TASK-205`.
+Eligible now: `TASK-004`, `TASK-006`, `TASK-205`.
 
 ## 6. Development Task Registry
 
@@ -123,19 +122,19 @@ Eligible now: `TASK-001`, `TASK-004`, `TASK-006`, `TASK-205`.
 
 ### MILESTONE-002 — Runtime Reliability and Mobile Quality
 
-### Recommended: TASK-001 — Add WebGL and Module Fallback
+### Recommended: TASK-006 — Measure Mobile Rendering Baseline
 
 - **Description:** Add visible, accessible fallback handling for WebGL initialization failure and Three.js/CDN module loading failure.
 - **Priority:** Critical (P0).
-- **Status:** TODO.
+- **Status:** TESTING.
 - **Dependencies:** TASK-101.
 - **Acceptance Criteria:**
   - WebGL unavailable produces an understandable fallback instead of a blank page.
   - Module/CDN failure produces actionable guidance.
   - Normal successful initialization and existing DOM product information remain usable.
-- **Progress:** 0%.
+- **Progress:** 80%.
 - **Related Docs:** [Task detail](tasks/MILESTONE-002/TASK-001.md), [Error Handling](../engineering/ERROR_HANDLING.md), [Security Audit](../security/SECURITY_AUDIT.md).
-- **Notes:** Do not replace Three.js or alter the product interaction scope.
+- **Notes:** Implemented fallback UI, module failure handlers, and WebGL initialization guard. Browser verification remains pending; do not mark DONE yet.
 
 ### TASK-002 — Define Mobile Performance Budget
 
@@ -305,13 +304,13 @@ flowchart TD
   T105 --> T204[TASK-204]
 ```
 
-No task is currently marked `BLOCKED`. `TASK-002` and `TASK-007` are TODO but dependency-gated by `TASK-006`; they must not be executed before its evidence exists. No circular dependency was found.
+No task is currently marked `BLOCKED`. `TASK-001` is in TESTING pending browser verification. `TASK-002` and `TASK-007` are TODO but dependency-gated by `TASK-006`; they must not be executed before its evidence exists. No circular dependency was found.
 
 ## 8. Recommended Next Task
 
 ### TASK-001 — Add WebGL and Module Fallback
 
-Execute `TASK-001` next. It has all dependencies satisfied, addresses the most severe user-facing failure mode, and is independently executable without waiting for performance measurements.
+Execute `TASK-006` next. `TASK-001` is already implemented and awaiting browser verification; TASK-006 is independently eligible and provides the evidence required by the next performance tasks.
 
 ## 9. Completed Tasks
 

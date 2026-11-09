@@ -19,7 +19,7 @@ The core interactive scene exists in `index.html`. Production readiness work rem
 
 ## Incomplete or pending
 
-- WebGL and module-load fallback.
+- WebGL and module-load fallback (implemented; browser verification pending).
 - Adaptive low-end performance strategy.
 - Loading state.
 - Snapshot export.
@@ -37,7 +37,7 @@ The core interactive scene exists in `index.html`. Production readiness work rem
 
 ## Current priorities
 
-1. Add graceful runtime failure states.
+1. Verify TASK-001 in a browser with WebGL disabled and CDN/module failure.
 2. Profile and reduce mobile GPU cost.
 3. Establish browser smoke tests and dependency governance.
 4. Synchronize legacy documentation with this state document.

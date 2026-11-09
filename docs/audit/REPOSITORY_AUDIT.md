@@ -2,7 +2,7 @@
 
 ## Findings
 
-- `AUD-001` High: no runtime fallback for WebGL/module failure (`index.html:102-119`).
+- `AUD-001` High: runtime fallback was absent; implementation is now present but browser verification remains pending (`index.html:100-153`).
 - `AUD-002` High: CDN-only dependency (`index.html:99-104`).
 - `AUD-003` Medium: no tests, package manifest, or CI workflow.
 - `AUD-004` Medium: source does not implement loading, snapshot, or camera tween milestones.

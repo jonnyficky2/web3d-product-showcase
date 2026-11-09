@@ -3,7 +3,7 @@
 - **Objective:** Show an accessible fallback when WebGL or CDN module loading fails.
 - **Background:** Current initialization can leave a blank page on runtime failure.
 - **Priority:** P0
-- **Status:** TODO
+- **Status:** TESTING
 - **Milestone:** MILESTONE-002
 - **Task type:** Reliability
 - **Complexity:** S
@@ -15,7 +15,7 @@
 - **Affected modules:** `index.html`
 - **Expected files:** `index.html`, `docs/project/PROJECT_STATE.md`
 - **Implementation Guidance:** Guard module/renderer startup and preserve a usable DOM product summary when WebGL fails.
-- **Acceptance criteria:** WebGL unavailable and module failure each produce visible, accessible guidance; normal load remains unchanged.
+- **Acceptance criteria:** WebGL unavailable and module failure each produce visible, accessible guidance; normal load remains unchanged. Static smoke and syntax checks pass; browser failure-path verification remains pending.
 - **Testing requirements:** Browser with WebGL disabled and blocked CDN.
-- **Definition of Done:** Both failure paths verified and status synchronized.
-- **Execution notes:** Not started.
+- **Definition of Done:** Both failure paths verified in a browser, normal load verified, and status synchronized.
+- **Execution notes:** Added accessible `role="alert"` fallback UI, module error/unhandled rejection handlers, and WebGL context guard. Browser/device verification is pending.

@@ -43,6 +43,11 @@
       .buy-button { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-top: 18px; padding: 13px 14px; border: 0; border-radius: 10px; background: #e2e8ee; color: #111820; text-decoration: none; font-size: 11px; font-weight: 700; letter-spacing: .06em; cursor: pointer; transition: background .2s, transform .2s; }
       .buy-button:hover { background: #fff; transform: translateY(-1px); }
       .hint { margin: 13px 0 0; color: #728094; font-size: 9px; letter-spacing: .04em; }
+      .runtime-fallback { position: fixed; z-index: 10; inset: 0; display: grid; place-items: center; padding: 24px; background: #090d14; color: #f5f7fb; text-align: center; }
+      .runtime-fallback[hidden] { display: none; }
+      .runtime-fallback-card { max-width: 460px; padding: 28px; border: 1px solid #ffffff20; border-radius: 16px; background: #101722; box-shadow: 0 18px 60px #0008; }
+      .runtime-fallback-card h1 { margin: 0 0 12px; font-size: 28px; letter-spacing: -.04em; }
+      .runtime-fallback-card p { margin: 0; color: #aeb9c7; font-size: 14px; line-height: 1.6; }
       @media (max-width: 680px) {
         .topbar { padding: 20px; }
         .nav { display: none; }
@@ -95,9 +100,34 @@
       <a class="buy-button" id="buy-button" href="mailto:hello@forma.example?subject=Pre-order%20Sonic%20One"><span>Pre-order</span><span aria-hidden="true">↗</span></a>
       <p class="hint">Drag untuk memutar · Scroll untuk zoom · Right-drag untuk pan</p>
     </aside>
+    <section class="runtime-fallback" id="runtime-fallback" role="alert" aria-live="assertive" hidden>
+      <div class="runtime-fallback-card">
+        <h1>Interactive preview unavailable</h1>
+        <p id="runtime-fallback-message">3D preview could not be initialized. Please use a modern browser with WebGL enabled and reload the page.</p>
+      </div>
+    </section>
 
     <script type="importmap">
       { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/" } }
+    </script>
+    <script>
+      const fallback = document.querySelector("#runtime-fallback");
+      const fallbackMessage = document.querySelector("#runtime-fallback-message");
+      window.showFormaFallback = (message) => {
+        fallbackMessage.textContent = message;
+        fallback.hidden = false;
+      };
+      window.addEventListener("error", (event) => {
+        const target = event.target;
+        if (target?.tagName === "SCRIPT" || /module|three|webgl/i.test(event.message || "")) {
+          window.showFormaFallback("The 3D preview could not load. Check your connection, enable WebGL, and reload the page.");
+        }
+      }, true);
+      window.addEventListener("unhandledrejection", (event) => {
+        if (/module|three|webgl|import/i.test(String(event.reason || ""))) {
+          window.showFormaFallback("The 3D preview could not load. Check your connection, enable WebGL, and reload the page.");
+        }
+      });
     </script>
     <script type="module">
       import * as THREE from "three";
@@ -108,7 +138,16 @@
       scene.background = new THREE.Color("#0b1018");
       const camera = new THREE.PerspectiveCamera(34, innerWidth / innerHeight, 0.1, 100);
       camera.position.set(4.5, 3.0, 7.5);
-      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+      let renderer;
+      try {
+        const testCanvas = document.createElement("canvas");
+        const hasWebGL = testCanvas.getContext("webgl2") || testCanvas.getContext("webgl");
+        if (!hasWebGL) throw new Error("WebGL is unavailable");
+        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+      } catch (error) {
+        window.showFormaFallback("3D preview is unavailable because WebGL could not be initialized. Enable hardware acceleration and reload the page.");
+        throw error;
+      }
       renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
       renderer.setSize(innerWidth, innerHeight);
       renderer.shadowMap.enabled = true;
