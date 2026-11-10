@@ -14,6 +14,12 @@
 - Static smoke assertion and module syntax check passed.
 - Browser failure-path verification remains pending; task status is `TESTING`.
 
+## 2026-11-10 — TASK-001 verification attempt
+
+- Rechecked the fallback implementation and confirmed the WebGL guard, module error handler, unhandled-rejection handler, and accessible alert remain present in `index.html`.
+- Static validation passed with `git diff --check`; Node.js is available, but no Chromium, Chrome, or Playwright executable is installed for browser execution.
+- WebGL-disabled, CDN/module-failure, and normal-load scenarios remain `PENDING`; TASK-001 stays `TESTING`.
+
 ## 2026-11-09 — TASK-006 baseline measurement
 
 - Inventory captured for renderer settings, shadow configuration, render loop, product group count, and structural mesh estimate.
