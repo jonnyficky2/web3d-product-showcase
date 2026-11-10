@@ -20,4 +20,4 @@
 - **Acceptance Criteria:** Source baseline and measurement procedure are documented; runtime measurements for at least one low-tier mobile profile and one desktop comparison remain pending; unknown metrics are explicitly labeled.
 - **Testing Requirements:** Browser Performance panel and renderer telemetry where available.
 - **Definition of Done:** Measurements are reproducible and published without claiming unmeasured targets.
-- **Execution Notes:** Captured source-verified renderer settings and structural mesh estimate in `docs/audit/PERFORMANCE_AUDIT.md`. Browser/device measurement remains pending; task is not DONE.
+- **Execution Notes:** Revalidated source-verified renderer settings and structural mesh estimate on 2026-11-10. Browser/device measurement remains pending because no browser profiler is available; task is not DONE.

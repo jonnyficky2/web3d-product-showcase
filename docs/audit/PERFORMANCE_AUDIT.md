@@ -1,11 +1,11 @@
 # Performance Audit
 
-**Baseline date:** 2026-11-09
+**Baseline date:** 2026-11-10
 **Task:** TASK-006
 
 ## Test availability
 
-No browser/device profiler is available in the current environment. The following values are source-verified or structural estimates; runtime FPS, frame time, actual draw calls, and GPU memory remain `UNKNOWN`.
+No browser/device profiler is available in the current environment. Chromium, Chrome, and Playwright executables were not found on 2026-11-10. The following values are source-verified or structural estimates; runtime FPS, frame time, actual draw calls, and GPU memory remain `UNKNOWN`.
 
 ## Source-verified configuration
 

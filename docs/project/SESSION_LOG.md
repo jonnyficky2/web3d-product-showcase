@@ -20,6 +20,12 @@
 - Static validation passed with `git diff --check`; Node.js is available, but no Chromium, Chrome, or Playwright executable is installed for browser execution.
 - WebGL-disabled, CDN/module-failure, and normal-load scenarios remain `PENDING`; TASK-001 stays `TESTING`.
 
+## 2026-11-10 — TASK-006 verification attempt
+
+- Revalidated renderer, DPR, shadow, render-loop, product-group, and geometry settings against `index.html`.
+- No browser profiler is installed, so low-tier mobile and desktop runtime metrics remain `UNKNOWN` and the task stays `TESTING`.
+- No rendering settings or application source were changed.
+
 ## 2026-11-09 — TASK-006 baseline measurement
 
 - Inventory captured for renderer settings, shadow configuration, render loop, product group count, and structural mesh estimate.
