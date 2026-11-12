@@ -20,6 +20,13 @@
 - Static validation passed with `git diff --check`; Node.js is available, but no Chromium, Chrome, or Playwright executable is installed for browser execution.
 - WebGL-disabled, CDN/module-failure, and normal-load scenarios remain `PENDING`; TASK-001 stays `TESTING`.
 
+## 2026-11-12 — TASK-001 static verification
+
+- Rechecked the visible accessible fallback, WebGL initialization guard, module-load error handler, and relevant unhandled-rejection handler in `index.html`.
+- Module syntax validation passed with Node.js using the inline module extracted from `index.html`.
+- No Chromium, Chrome, or Playwright executable is installed; WebGL-disabled, CDN/module-failure, and normal-load browser scenarios remain `PENDING`.
+- TASK-001 remains `TESTING`; no application source changes were required.
+
 ## 2026-11-10 — TASK-006 verification attempt
 
 - Revalidated renderer, DPR, shadow, render-loop, product-group, and geometry settings against `index.html`.
